@@ -22,4 +22,13 @@ class BookmarkList extends Component {
   }
 }
 
+BookmarkList.propTypes = {
+  bookmarks: PropTypes.arrayOf(PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    rating: PropTypes.number,
+    description: PropTypes.string
+  }))
+};
+
 export default BookmarkList;
