@@ -34,7 +34,7 @@ const bookmarks = [
 class App extends Component {
   state = {
     page: 'list',
-    //bookmarks, //sawp with context
+    //bookmarks, //swap with context
     error: null,
   };
 
