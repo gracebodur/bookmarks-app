@@ -10,6 +10,12 @@ const Required = () => (
 )
 
 class AddBookmark extends Component {
+
+  static propTypes = {
+    history: PropTypes.shape({
+      push: PropTypes.func,
+    }).isRequired,
+  };
  
     static contextType = BookmarksContext
   state = {
@@ -148,8 +154,8 @@ class AddBookmark extends Component {
 export default AddBookmark;
 
 
-AddBookmark.proptypes = {
-    history: PropTypes.shape({
-      push: PropTypes.func,
-    }).isRequired,
-  };
+// AddBookmark.proptypes = {
+//     history: PropTypes.shape({
+//       push: PropTypes.func,
+//     }).isRequired,
+//   };
