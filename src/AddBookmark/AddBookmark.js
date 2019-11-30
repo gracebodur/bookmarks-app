@@ -2,6 +2,7 @@ import React, { Component } from  'react';
 // import {withRouter} from 'react-router-dom'
 import BookmarksContext from '../BookmarksContext'
 import config from '../config'
+import PropTypes from 'prop-types'
 import './AddBookmark.css';
 
 const Required = () => (
@@ -145,3 +146,10 @@ class AddBookmark extends Component {
 }
 
 export default AddBookmark;
+
+
+AddBookmark.proptypes = {
+    history: PropTypes.shape({
+      push: PropTypes.func,
+    }).isRequired,
+  };

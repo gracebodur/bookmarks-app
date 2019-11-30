@@ -2,6 +2,7 @@ import React from 'react';
 import Rating from '../Rating/Rating';
 import BookmarksContext from '../BookmarksContext'
 import config from '../config'
+import PropTypes from 'prop-types'
 import './BookmarkItem.css';
 
 function deleteBookmarkRequest(bookmarkId, callback) {
@@ -71,6 +72,18 @@ export default function BookmarkItem(props) {
   )
 }
 
-// BookmarkItem.defaultProps = {
-//   onClickDelete: () => {},
-// }
+BookmarkItem.defaultProps = {
+  onClickDelete: () => {},
+}
+
+BookmarkItem.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]).isRequired,
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  desciption: PropTypes.string,
+  rating: PropTypes.number.isRequired,
+  onClickDelete: PropTypes.func,
+}

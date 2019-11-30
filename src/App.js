@@ -71,25 +71,16 @@ class App extends Component {
     return (
       <main className='App'>
         <h1>Bookmarks!</h1>
-        <BookmarksContext.Provider value={contextValue}>
-        <Nav clickPage={this.changePage} />
-        <div className='content' aria-live='polite'>
-        <Route path='/add-bookmark'> <AddBookmark />  </Route>
-              
-            {/* // render={({ history }) => { */}
-            {/* //   return <AddBookmark
-            //     onAddBookmark={this.addBookmark}
-            //     onClickCancel={() => history.push('/')}
-            //   />
-            // }}
-          /> */}
+          <BookmarksContext.Provider value={contextValue}>
+          <Nav clickPage={this.changePage} />
+          <div className='content' aria-live='polite'>
           <Route
-            exact
-            path='/'><BookmarkList /></Route>
-          {/* //   render={({ history }) => {
-          //     return <BookmarkList bookmarks={bookmarks} />
-          //   }}
-          // /> */}
+              path='/add-bookmark'
+              component={AddBookmark}
+            />
+          <Route
+            exact path='/'
+            component={BookmarkList} />
         </div>
         </BookmarksContext.Provider>
       </main>
