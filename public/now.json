@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "alias": "[gracebodur]-bookmarks-app",
+    "alias": "[Gracebodur]-bookmarks-app",
     "name": "bookmarks-app",
     "routes": [
         { "handle": "filesystem" },
