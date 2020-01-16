@@ -24,12 +24,17 @@ class BookmarkList extends Component {
 }
 
 BookmarkList.propTypes = {
-  bookmarks: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+  bookmarks: PropTypes.arrayOf(
+    PropTypes.shape({
+    id: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+      ]).isRequired,
+    title: PropTypes.string,
+    url: PropTypes.string,
     rating: PropTypes.number,
-    description: PropTypes.string
-  }))
+    description: PropTypes.string,
+  })).isRequired
 };
 
 export default BookmarkList;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Route} from 'react-router-dom'
 import AddBookmark from './AddBookmark/AddBookmark';
 import BookmarkList from './BookmarkList/BookmarkList';
+import EditBookmark from './EditBookmark/EditBookmark'
 import BookmarksContext from './BookmarksContext'
 import Nav from './Nav/Nav';
 import config from './config';
@@ -42,7 +43,7 @@ class App extends Component {
       bookmarks: newBookmarks
     })
   }
-
+ 
   componentDidMount() {
     fetch(config.API_ENDPOINT, {
       method: 'GET',
@@ -61,12 +62,21 @@ class App extends Component {
       .catch(error => this.setState({ error }))
   }
 
+  updateBookmark = updatedBookmark => {
+    this.setState({
+      bookmarks: this.state.bookmarks.map(bookmarks =>
+        (bookmarks.id !==updatedBookmark.id) ? bookmarks : updatedBookmark
+        )
+    })
+  }
+
   render() {
    // const { bookmarks } = this.state
    const contextValue = {
      bookmarks: this.state.bookmarks,
      addBookmark: this.addBookmark,
      deleteBookmark: this.deleteBookmark,
+     updateBookmark: this.updateBookmark
    }
     return (
       <main className='App'>
@@ -74,13 +84,19 @@ class App extends Component {
           <BookmarksContext.Provider value={contextValue}>
           <Nav clickPage={this.changePage} />
           <div className='content' aria-live='polite'>
+            <Route
+            exact path='/'
+            component={BookmarkList}
+            />
+
           <Route
               path='/add-bookmark'
               component={AddBookmark}
             />
           <Route
-            exact path='/'
-            component={BookmarkList} />
+            exact path='/edit/:bookmarkId'
+            component={EditBookmark} 
+          />
         </div>
         </BookmarksContext.Provider>
       </main>
