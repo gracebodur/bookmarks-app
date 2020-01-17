@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Rating from '../Rating/Rating';
 import BookmarksContext from '../BookmarksContext'
 import config from '../config'
@@ -53,6 +54,10 @@ export default function BookmarkItem(props) {
           {props.description}
         </p>
         <div className='BookmarkItem__buttons'>
+          <Link to={`/edit/${props.id}`}>
+          Edit
+          </Link>
+          {' '}
           <button
             className='BookmarkItem__description'
             // onClick={() => props.onClickDelete(props.id)}
